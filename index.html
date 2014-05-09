@@ -303,16 +303,16 @@
           <br>安心預算 完全免費</div>
       </div>
     </div>
-    <div class="row bg-black" id="subscribe-section">
+    <div class="row bg-black" id="subscribe-section2">
       <div class="w-form sec12-input">
         <form class="top" id="email-form" name="email-form" data-name="Email Form">
           <label class="text-input" for="email-2">我對這個很感興趣</label>
-          <input class="w-input emailbox" id="email-2" type="email" placeholder="留下您的Email  產品上線時通知您 ! " name="email-2" data-name="Email 2" required="required">
+          <input class="w-input emailbox" id="email2" type="email" placeholder="留下您的Email  產品上線時通知您 ! " name="email-2" data-name="Email 2" required="required">
           <div class="pack2">
-            <textarea class="w-input text-box" id="comment" placeholder="可以在這裡留下您的建議噢！" name="field"></textarea>
+            <textarea class="w-input text-box" id="comment2" placeholder="可以在這裡留下您的建議噢！" name="field"></textarea>
           </div>
           <a class="w-inline-block sent" href="#">
-            <div class="sentwafo" id="email-submit">
+            <div class="sentwafo" id="email-submit2">
               <div class="text-sent"><strong>送出</strong>
               </div>
             </div>
@@ -326,7 +326,7 @@
         </div>
       </div>
     </div>
-    <div class="row success" id="subscribed-section">
+    <div class="row success" id="subscribed-section2">
       <div class="sec13-message">
         <img class="logom-img" src="images/LOGOM-05.png" width="150" alt="5359e4bd0548c9ed47000209_LOGOM-05.png">
         <div class="text-s"><strong class="text-done">您的資訊已成功送出，謝謝</strong>
@@ -447,11 +447,19 @@
       var $comment = $('#comment');
       $('#email-submit').on('click', function(event) {
         event.preventDefault();
-        subscribe($email.val(), $comment.val());
+        subscribe($email.val(), $comment.val() + "[web]");
+      });
+      var $email2 = $('#email2');
+      var $comment2 = $('#comment2');
+      $('#email-submit2').on('click', function(event) {
+        event.preventDefault();
+        subscribe($email2.val(), $comment2.val() + "[mobile]");
       });
       if(subscribed()) {
         $('#subscribe-section').hide();
         $('#subscribed-section').show();
+        $('#subscribe-section2').hide();
+        $('#subscribed-section2').show();
       }
     });
     function subscribe(email, comment) {
@@ -476,6 +484,8 @@
         $.cookie('subscribed', 't');
         $('#subscribe-section').hide();
         $('#subscribed-section').show();
+        $('#subscribe-section2').hide();
+        $('#subscribed-section2').show();
       }).fail(function() {
       }).always(function() {
       });
@@ -487,6 +497,17 @@
     function subscribed() {
       return !!$.cookie('subscribed');
     }
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-50818275-1', 'wafo.me');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+
   </script>
 </body>
 </html>
